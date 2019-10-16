@@ -3,6 +3,7 @@
 namespace Src;
 
 use Src\Interfaces\Product as iProduct;
+use Src\Models\Product as modelProduct;
 
 class Product implements iProduct {
 
@@ -28,14 +29,16 @@ class Product implements iProduct {
       'price' => $price,
       'quantity' => $quantity
     ));
-    //file_put_contents(__DIR__ . '/../data/database.json', json_encode($array));
+    file_put_contents(__DIR__ . '/../data/database.json', json_encode($array));
     unset($array);
 
     $this->show($lastElement['id']);
   }
 
   public function show($productId) {
-    
+    $result = modelProduct::getProduct($productId);
+
+    print_r($result);
   }
 
   public function showAll() {
