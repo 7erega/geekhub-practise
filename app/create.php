@@ -6,4 +6,4 @@ use Src\Product;
 
 $product = new Product();
 
-$product->showAll();
+$product->add();
