@@ -1,70 +1,70 @@
 {
   "products": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Product 1",
       "category_id": "1",
       "price": "200",
       "quantity": "10"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Product 2",
       "category_id": "1",
       "price": "100",
       "quantity": "15"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Product 3",
       "category_id": "2",
       "price": "300",
       "quantity": "5"
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "Product 4",
       "category_id": "2",
       "price": "150",
       "quantity": "20"
     },
     {
-      "id": "5",
+      "id": 5,
       "name": "Product 5",
       "category_id": "2",
       "price": "250",
       "quantity": "15"
     },
     {
-      "id": "6",
+      "id": 6,
       "name": "Product 6",
       "category_id": "3",
       "price": "200",
       "quantity": "10"
     },
     {
-      "id": "7",
+      "id": 7,
       "name": "Product 7",
       "category_id": "3",
       "price": "200",
       "quantity": "25"
     },
     {
-      "id": "8",
+      "id": 8,
       "name": "Product 8",
       "category_id": "3",
       "price": "400",
       "quantity": "5"
     },
     {
-      "id": "9",
+      "id": 9,
       "name": "Product 9",
       "category_id": "1",
       "price": "500",
       "quantity": "5"
     },
     {
-      "id": "10",
+      "id": 10,
       "name": "Product 10",
       "category_id": "2",
       "price": "100",
@@ -73,15 +73,15 @@
   ],
   "categories": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Category 1"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Category 2"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Category 3"
     }
   ]
