@@ -11,9 +11,6 @@
         "psr-4": {
             "Src\\": "src",
             "App\\": "app"
-        },
-        "files": [
-            "data/database.json"
-        ]
+        }
     }
 }

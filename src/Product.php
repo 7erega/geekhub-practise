@@ -1,5 +1,7 @@
 <?php
 
+namespace Src;
+
 use Src\Interfaces\Product as iProduct;
 
 class Product implements iProduct {
@@ -12,7 +14,7 @@ class Product implements iProduct {
   }
 
   public function showAll() {
-
+    echo "test\n";
   }
 
   public function changeCategory($prodtcId, $categoryId) {
