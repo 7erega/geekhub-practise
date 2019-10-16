@@ -1,0 +1,19 @@
+{
+    "name": "smelnyk/github-practise",
+    "authors": [
+        {
+            "name": "Serhii Melnyk",
+            "email": "melnyk376@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src",
+            "App\\": "app"
+        },
+        "files": [
+            "data/database.json"
+        ]
+    }
+}
