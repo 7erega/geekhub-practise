@@ -42,7 +42,9 @@ class Product implements iProduct {
   }
 
   public function showAll() {
+    $result = modelProduct::getProducts();
 
+    print_r($result);
   }
 
   public function changeCategory($productId, $categoryId) {

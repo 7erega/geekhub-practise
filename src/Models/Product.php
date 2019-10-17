@@ -18,4 +18,12 @@ class Product {
 
     return $productsList[$id];
   }
+
+  static function getProducts() {
+    $file = file_get_contents(__DIR__ . '/../../data/database.json');
+    $array = json_decode($file, TRUE);
+    unset($file);
+
+    return $array['products'];
+  }
 }
