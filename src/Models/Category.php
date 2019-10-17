@@ -18,8 +18,4 @@ class Category {
 
     return $categoriesList;
   }
-
-  static function getCategoryName($id) {
-
-  }
 }
