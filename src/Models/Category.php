@@ -18,4 +18,10 @@ class Category {
 
     return $categoriesList;
   }
+
+  static function getCategoryName($id) {
+    $categoriesList = self::getCategories();
+
+    return $categoriesList[$id];
+  }
 }

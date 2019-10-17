@@ -37,9 +37,13 @@ class Product implements iProduct {
   }
 
   public function show($productId) {
-    $result = modelProduct::getProduct($productId);
+    $product = modelProduct::getProduct($productId);
+    $category= modelCategory::getCategoryName($product['category_id']);
 
-    print_r($result);
+    echo "\nThis product was added:\nProduct name: " . $product['name'] . "\n" .
+        "Price: " . $product['price'] . "\n" .
+        "Quantity: " . $product['quantity'] . "\n" .
+        "Category: " . $category . "\n";
   }
 
   public function showAll() {
