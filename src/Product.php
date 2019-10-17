@@ -43,6 +43,9 @@ class Product implements iProduct {
   }
 
   public function showAll() {
+    $inputData = $this->getInputData();
+    $this->changeCategory($inputData['productId'], $inputData['categoryId']);
+
     $products = modelProduct::getProducts();
     $categories = modelCategory::getCategories();
 
@@ -61,5 +64,17 @@ class Product implements iProduct {
 
   public function changeCategory($productId, $categoryId) {
 
+  }
+
+  private function getInputData() {
+    fwrite(STDOUT, 'Move product (enter product id): ');
+    $productId = trim(fgets(STDIN));
+    fwrite(STDOUT, 'To category (enter category id): ');
+    $categoryId = trim(fgets(STDIN));
+
+    return $inputData = [
+      'productId' => $productId,
+      'categoryId' => $categoryId
+    ];
   }
 }
