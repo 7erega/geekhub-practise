@@ -4,6 +4,7 @@ namespace Src;
 
 use Src\Interfaces\Product as iProduct;
 use Src\Models\Product as modelProduct;
+use Src\Models\Category as modelCategory;
 
 class Product implements iProduct {
 
@@ -42,9 +43,20 @@ class Product implements iProduct {
   }
 
   public function showAll() {
-    $result = modelProduct::getProducts();
+    $products = modelProduct::getProducts();
+    $categories = modelCategory::getCategories();
 
-    print_r($result);
+    foreach ($categories as $categoryId => $categoryName) {
+      echo $categoryName . "\n";
+      foreach ($products as $product) {
+        if ($product['category_id'] == $categoryId) {
+          echo "\nProduct name: " . $product['name'] . "\nPrice: " . $product['price'] . "\nQuantity: " . $product['quantity'] . "\n";
+        }
+      }
+      echo "\n";
+    }
+
+    echo "\n";
   }
 
   public function changeCategory($productId, $categoryId) {
