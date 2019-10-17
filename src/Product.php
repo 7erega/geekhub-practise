@@ -45,7 +45,7 @@ class Product implements iProduct {
 
   }
 
-  public function changeCategory($prodtcId, $categoryId) {
+  public function changeCategory($productId, $categoryId) {
 
   }
 }
