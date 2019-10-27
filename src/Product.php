@@ -10,14 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 class Product implements iProduct {
 
   public function add() {
-    fwrite(STDOUT, 'Enter product name: ');
-    $productName = trim(fgets(STDIN));
-    fwrite(STDOUT, 'Enter category id: ');
-    $categoryId = trim(fgets(STDIN));
-    fwrite(STDOUT, 'Enter price: ');
-    $price = trim(fgets(STDIN));
-    fwrite(STDOUT, 'Enter quantity: ');
-    $quantity = trim(fgets(STDIN));
+    $productName = 'Test product';
+    $categoryId = '1';
+    $price = '200';
+    $quantity = '5';
 
     $file = file_get_contents(__DIR__ . '/../data/database.json');
     $array = json_decode($file, TRUE);
@@ -39,12 +35,12 @@ class Product implements iProduct {
 
   public function show($productId) {
     $product = modelProduct::getProduct($productId);
-    $category= modelCategory::getCategoryName($product['category_id']);
+    $category = modelCategory::getCategoryName($product['category_id']);
 
-    echo "\nThis product was added:\nProduct name: " . $product['name'] . "\n" .
-        "Price: " . $product['price'] . "\n" .
-        "Quantity: " . $product['quantity'] . "\n" .
-        "Category: " . $category . "\n";
+    echo "This product was added:<br>Product name: " . $product['name'] . "<br>" .
+        "Price: " . $product['price'] . "<br>" .
+        "Quantity: " . $product['quantity'] . "<br>" .
+        "Category: " . $category . "<br>";
   }
 
   public function showAll() {
