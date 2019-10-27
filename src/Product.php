@@ -5,8 +5,13 @@ namespace Src;
 use Src\Interfaces\Product as iProduct;
 use Src\Models\Product as modelProduct;
 use Src\Models\Category as modelCategory;
+use Symfony\Component\HttpFoundation\Response;
 
 class Product implements iProduct {
+
+  public function index() {
+    return new Response('Nope, this is not a leap year.');
+  }
 
   public function add() {
     fwrite(STDOUT, 'Enter product name: ');
