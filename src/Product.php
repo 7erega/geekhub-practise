@@ -51,16 +51,16 @@ class Product implements iProduct {
     $categories = modelCategory::getCategories();
 
     foreach ($categories as $categoryId => $categoryName) {
-      echo $categoryName . "\n";
+      echo $categoryName . "<br>";
       foreach ($products as $product) {
         if ($product['category_id'] == $categoryId) {
-          echo "\nProduct name: " . $product['name'] . "\nPrice: " . $product['price'] . "\nQuantity: " . $product['quantity'] . "\n";
+          echo "<br>Product name: " . $product['name'] . "<br>Price: " . $product['price'] . "<br>Quantity: " . $product['quantity'] . "<br>";
         }
       }
-      echo "\n";
+      echo "<br>";
     }
 
-    echo "\n";
+    echo "<br>";
   }
 
   public function changeCategory($productId, $categoryId) {
@@ -77,10 +77,8 @@ class Product implements iProduct {
   }
 
   private function getInputData() {
-    fwrite(STDOUT, 'Move product (enter product id): ');
-    $productId = trim(fgets(STDIN));
-    fwrite(STDOUT, 'To category (enter category id): ');
-    $categoryId = trim(fgets(STDIN));
+    $productId = 5;
+    $categoryId = 3;
 
     return $inputData = [
       'productId' => $productId,

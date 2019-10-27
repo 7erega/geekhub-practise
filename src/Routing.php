@@ -43,8 +43,12 @@ class Routing
 
     private function getRoutes()
     {
-        $this->routes->add('product', new Route('/product/create', [
+        $this->routes->add('product_create', new Route('/product/create', [
           '_controller' => 'App\ProductController::create',
+        ]));
+
+        $this->routes->add('product_move', new Route('/product/move', [
+          '_controller' => 'App\ProductController::move',
         ]));
     }
 }
