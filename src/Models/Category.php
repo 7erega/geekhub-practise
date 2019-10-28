@@ -2,26 +2,35 @@
 
 namespace Src\Models;
 
-class Category {
+class Category
+{
+    private $fileContent;
+    private $id;
+    private $name;
 
-  static function getCategories() {
-    $file = file_get_contents(__DIR__ . '/../../data/database.json');
-    $array = json_decode($file, TRUE);
-    unset($file);
-
-    $categoriesList = array();
-
-    foreach ($array['categories'] as $category) {
-      $categoryId = array_shift($category);
-      $categoriesList[$categoryId] = $category['name'];
+    public function __construct()
+    {
+        $file = file_get_contents(__DIR__ . '/../../data/database.json');
+        $this->fileContent = json_decode($file, true);
+        unset($file);
     }
 
-    return $categoriesList;
-  }
+    public function getCategories()
+    {
+        $categoriesList = array();
 
-  static function getCategoryName($id) {
-    $categoriesList = self::getCategories();
+        foreach ($this->fileContent['categories'] as $category) {
+            $categoryId = array_shift($category);
+            $categoriesList[$categoryId] = $category['name'];
+        }
 
-    return $categoriesList[$id];
-  }
+        return $categoriesList;
+    }
+
+    public function getCategoryName($id)
+    {
+        $categoriesList = $this->getCategories();
+
+        return $categoriesList[$id];
+    }
 }

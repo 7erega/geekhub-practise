@@ -12,33 +12,26 @@ use Symfony\Component\Routing\RouteCollection;
 
 class Routing
 {
-    private $request;
     private $routes;
-    private $context;
-    private $matcher;
-    private $controllerResolver;
-    private $argumentResolver;
-    private $bootstrap;
-    private $response;
 
     public function __construct()
     {
-        $this->request = Request::createFromGlobals();
+        $request = Request::createFromGlobals();
 
         $this->routes = new RouteCollection();
 
         $this->getRoutes();
 
-        $this->context = new RequestContext();
-        $this->matcher = new UrlMatcher($this->routes, $this->context);
+        $context = new RequestContext();
+        $matcher = new UrlMatcher($this->routes, $context);
 
-        $this->controllerResolver = new ControllerResolver();
-        $this->argumentResolver = new ArgumentResolver();
+        $controllerResolver = new ControllerResolver();
+        $argumentResolver = new ArgumentResolver();
 
-        $this->bootstrap = new Bootstrap($this->matcher, $this->controllerResolver, $this->argumentResolver);
-        $this->response = $this->bootstrap->handle($this->request);
+        $bootstrap = new Bootstrap($matcher, $controllerResolver, $argumentResolver);
+        $response = $bootstrap->handle($request);
 
-        $this->response->send();
+        $response->send();
     }
 
     private function getRoutes()
