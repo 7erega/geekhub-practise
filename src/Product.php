@@ -55,11 +55,8 @@ class Product implements iProduct
 
     public function showAll()
     {
-        $inputData = $this->getInputData();
-        $this->changeCategory($inputData['productId'], $inputData['categoryId']);
-
-        $products = modelProduct::getProducts();
-        $categories = modelCategory::getCategories();
+        $products = $this->modelProduct->getProducts();
+        $categories = $this->modelCategory->getCategories();
 
         foreach ($categories as $categoryId => $categoryName) {
             echo $categoryName . "<br>";
