@@ -6,5 +6,5 @@ interface Product {
   public function add();
   public function show($productId);
   public function showAll();
-  public function changeCategory($productId, $categoryId);
+  public function changeCategory();
 }

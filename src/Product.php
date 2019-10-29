@@ -71,8 +71,12 @@ class Product implements iProduct
         echo "<br>";
     }
 
-    public function changeCategory($productId, $categoryId)
+    public function changeCategory()
     {
+        $inputData = $this->getInputData();
+        $productId = $inputData['productId'];
+        $categoryId = $inputData['categoryId'];
+
         $file = file_get_contents(__DIR__ . '/../data/database.json');
         $array = json_decode($file, true);
         unset($file);
