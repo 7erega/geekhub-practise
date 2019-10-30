@@ -57,21 +57,11 @@ class Product implements iProduct
 
     public function changeCategory()
     {
-        $inputData = $this->getInputData();
-        $productId = $inputData['productId'];
-        $categoryId = $inputData['categoryId'];
+        if (isset($_POST['submit'])) {
+            $productId = htmlspecialchars(trim($_POST['productId']));
+            $categoryId = htmlspecialchars(trim($_POST['categoryId']));
+        }
 
         $this->modelProduct->changeCategory($productId, $categoryId);
-    }
-
-    private function getInputData()
-    {
-        $productId = 5;
-        $categoryId = 3;
-
-        return $inputData = [
-          'productId' => $productId,
-          'categoryId' => $categoryId
-        ];
     }
 }

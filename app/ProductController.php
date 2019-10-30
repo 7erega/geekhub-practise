@@ -31,6 +31,11 @@ class ProductController
 
     public function move()
     {
+        View::render('product.move');
+    }
+
+    public function movePost()
+    {
         $this->product->changeCategory();
         $this->product->showAll();
     }

@@ -55,5 +55,9 @@ class Routing
         $this->routes->add('product_move', new Route('/product/move', [
           '_controller' => 'App\ProductController::move',
         ]));
+
+        $this->routes->add('product_move_post', new Route('/product/move/post', [
+          '_controller' => 'App\ProductController::movePost',
+        ]));
     }
 }
