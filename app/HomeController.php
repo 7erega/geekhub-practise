@@ -3,6 +3,7 @@
 namespace App;
 
 use Src\Product;
+use Src\View;
 
 class HomeController {
 
@@ -13,7 +14,7 @@ class HomeController {
     }
 
     public function index() {
-        $this->product->showAll();
+        View::render('index');
     }
 }
 

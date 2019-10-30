@@ -12,6 +12,10 @@ class ProductController {
     $this->product = new Product();
   }
 
+    public function showAll() {
+        $this->product->showAll();
+    }
+
   public function create() {
     $this->product->create();
   }

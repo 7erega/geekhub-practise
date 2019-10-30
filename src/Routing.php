@@ -40,6 +40,10 @@ class Routing
           '_controller' => 'App\HomeController::index',
         ]));
 
+        $this->routes->add('all_products', new Route('/products', [
+          '_controller' => 'App\ProductController::showAll',
+        ]));
+
         $this->routes->add('product_create', new Route('/product/create', [
           '_controller' => 'App\ProductController::create',
         ]));
