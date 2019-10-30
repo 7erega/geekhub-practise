@@ -52,17 +52,7 @@ class Product implements iProduct
         $products = $this->modelProduct->getProducts();
         $categories = $this->modelCategory->getCategories();
 
-        foreach ($categories as $categoryId => $categoryName) {
-            echo $categoryName . "<br>";
-            foreach ($products as $product) {
-                if ($product['category_id'] == $categoryId) {
-                    echo "<br>Product name: " . $product['name'] . "<br>Price: " . $product['price'] . "<br>Quantity: " . $product['quantity'] . "<br>";
-                }
-            }
-            echo "<br>";
-        }
-
-        echo "<br>";
+        View::render('product.products', ['products' => $products, 'categories' => $categories]);
     }
 
     public function changeCategory()
