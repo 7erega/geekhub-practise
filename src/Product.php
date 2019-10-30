@@ -5,6 +5,7 @@ namespace Src;
 use Src\Interfaces\Product as iProduct;
 use Src\Models\Product as modelProduct;
 use Src\Models\Category as modelCategory;
+use Symfony\Component\HttpFoundation\Request;
 
 class Product implements iProduct
 {
@@ -19,10 +20,12 @@ class Product implements iProduct
 
     public function create()
     {
-        $productName = 'Test product';
-        $categoryId = '1';
-        $price = '200';
-        $quantity = '5';
+        if (isset($_POST['submit'])) {
+            $productName = htmlspecialchars(trim($_POST['productName']));
+            $categoryId = htmlspecialchars(trim($_POST['categoryId']));
+            $price = htmlspecialchars(trim($_POST['price']));
+            $quantity = htmlspecialchars(trim($_POST['quantity']));
+        }
 
         $data = [
           'productName' => $productName,

@@ -48,6 +48,10 @@ class Routing
           '_controller' => 'App\ProductController::create',
         ]));
 
+        $this->routes->add('product_create_post', new Route('/product/create/post', [
+          '_controller' => 'App\ProductController::createPost',
+        ]));
+
         $this->routes->add('product_move', new Route('/product/move', [
           '_controller' => 'App\ProductController::move',
         ]));
