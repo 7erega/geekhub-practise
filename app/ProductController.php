@@ -17,6 +17,7 @@ class ProductController {
   }
 
   public function move() {
+      $this->product->changeCategory();
     $this->product->showAll();
   }
 }

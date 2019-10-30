@@ -71,16 +71,7 @@ class Product implements iProduct
         $productId = $inputData['productId'];
         $categoryId = $inputData['categoryId'];
 
-        $file = file_get_contents(__DIR__ . '/../data/database.json');
-        $array = json_decode($file, true);
-        unset($file);
-        foreach ($array['products'] as $key => $product) {
-            if ($product['id'] == $productId) {
-                $array['products'][$key]['category_id'] = $categoryId;
-            }
-        }
-        file_put_contents(__DIR__ . '/../data/database.json', json_encode($array));
-        unset($array);
+        $this->modelProduct->changeCategory($productId, $categoryId);
     }
 
     private function getInputData()

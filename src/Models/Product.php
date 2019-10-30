@@ -34,6 +34,16 @@ class Product
         return $lastElement['id'];
     }
 
+    public function changeCategory($productId, $categoryId)
+    {
+        foreach ($this->fileContent['products'] as $key => $product) {
+            if ($product['id'] == $productId) {
+                $this->fileContent['products'][$key]['category_id'] = $categoryId;
+            }
+        }
+        file_put_contents(__DIR__ . '/../../data/database.json', json_encode($this->fileContent));
+    }
+
     public function getProduct($id)
     {
         $productsList = array();
