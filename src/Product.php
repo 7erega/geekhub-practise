@@ -17,29 +17,23 @@ class Product implements iProduct
         $this->modelCategory = new modelCategory();
     }
 
-    public function add()
+    public function create()
     {
         $productName = 'Test product';
         $categoryId = '1';
         $price = '200';
         $quantity = '5';
 
-        $file = file_get_contents(__DIR__ . '/../data/database.json');
-        $array = json_decode($file, true);
-        unset($file);
-        $arrayLength = count($array['products']);
-        $lastElement = $array['products'][$arrayLength - 1];
-        array_push($array['products'], array(
-          'id' => ++$lastElement['id'],
-          'name' => $productName,
-          'category_id' => $categoryId,
+        $data = [
+          'productName' => $productName,
+          'categoryId' => $categoryId,
           'price' => $price,
-          'quantity' => $quantity
-        ));
-        file_put_contents(__DIR__ . '/../data/database.json', json_encode($array));
-        unset($array);
+          'quantity' => $quantity,
+        ];
 
-        $this->show($lastElement['id']);
+        $lastElementId = $this->modelProduct->setProduct($data);
+
+        $this->show($lastElementId);
     }
 
     public function show($productId)

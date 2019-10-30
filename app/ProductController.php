@@ -13,7 +13,7 @@ class ProductController {
   }
 
   public function create() {
-    $this->product->add();
+    $this->product->create();
   }
 
   public function move() {

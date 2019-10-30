@@ -18,6 +18,22 @@ class Product
         unset($file);
     }
 
+    public function setProduct($data)
+    {
+        $arrayLength = count($this->fileContent['products']);
+        $lastElement = $this->fileContent['products'][$arrayLength - 1];
+        array_push($this->fileContent['products'], array(
+          'id' => ++$lastElement['id'],
+          'name' => $data['productName'],
+          'category_id' => $data['categoryId'],
+          'price' => $data['price'],
+          'quantity' => $data['quantity'],
+        ));
+        file_put_contents(__DIR__ . '/../../data/database.json', json_encode($this->fileContent));
+
+        return $lastElement['id'];
+    }
+
     public function getProduct($id)
     {
         $productsList = array();
