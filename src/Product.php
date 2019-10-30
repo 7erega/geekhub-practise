@@ -41,10 +41,7 @@ class Product implements iProduct
         $product = $this->modelProduct->getProduct($productId);
         $category = $this->modelCategory->getCategoryName($product['category_id']);
 
-        echo "This product was added:<br>Product name: " . $product['name'] . "<br>" .
-        "Price: " . $product['price'] . "<br>" .
-        "Quantity: " . $product['quantity'] . "<br>" .
-        "Category: " . $category . "<br>";
+        View::render('product.product', ['product' => $product, 'category' => $category]);
     }
 
     public function showAll()
