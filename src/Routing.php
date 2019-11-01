@@ -12,43 +12,52 @@ use Symfony\Component\Routing\RouteCollection;
 
 class Routing
 {
-    private $request;
     private $routes;
-    private $context;
-    private $matcher;
-    private $controllerResolver;
-    private $argumentResolver;
-    private $bootstrap;
-    private $response;
 
     public function __construct()
     {
-        $this->request = Request::createFromGlobals();
+        $request = Request::createFromGlobals();
 
         $this->routes = new RouteCollection();
 
         $this->getRoutes();
 
-        $this->context = new RequestContext();
-        $this->matcher = new UrlMatcher($this->routes, $this->context);
+        $context = new RequestContext();
+        $matcher = new UrlMatcher($this->routes, $context);
 
-        $this->controllerResolver = new ControllerResolver();
-        $this->argumentResolver = new ArgumentResolver();
+        $controllerResolver = new ControllerResolver();
+        $argumentResolver = new ArgumentResolver();
 
-        $this->bootstrap = new Bootstrap($this->matcher, $this->controllerResolver, $this->argumentResolver);
-        $this->response = $this->bootstrap->handle($this->request);
+        $bootstrap = new Bootstrap($matcher, $controllerResolver, $argumentResolver);
+        $response = $bootstrap->handle($request);
 
-        $this->response->send();
+        $response->send();
     }
 
     private function getRoutes()
     {
+        $this->routes->add('home_page', new Route('/', [
+          '_controller' => 'App\HomeController::index',
+        ]));
+
+        $this->routes->add('all_products', new Route('/products', [
+          '_controller' => 'App\ProductController::showAll',
+        ]));
+
         $this->routes->add('product_create', new Route('/product/create', [
           '_controller' => 'App\ProductController::create',
         ]));
 
+        $this->routes->add('product_create_post', new Route('/product/create/post', [
+          '_controller' => 'App\ProductController::createPost',
+        ]));
+
         $this->routes->add('product_move', new Route('/product/move', [
           '_controller' => 'App\ProductController::move',
+        ]));
+
+        $this->routes->add('product_move_post', new Route('/product/move/post', [
+          '_controller' => 'App\ProductController::movePost',
         ]));
     }
 }

@@ -3,22 +3,40 @@
 namespace App;
 
 use Src\Product;
+use Src\View;
 
-class ProductController {
+class ProductController
+{
+    private $product;
 
-  private $product;
+    public function __construct()
+    {
+        $this->product = new Product();
+    }
 
-  public function __construct() {
-    $this->product = new Product();
-  }
+    public function showAll()
+    {
+        $this->product->showAll();
+    }
 
-  public function create() {
-    $this->product->add();
-  }
+    public function create()
+    {
+        View::render('product.create');
+    }
 
-  public function move() {
-    $this->product->showAll();
-  }
+    public function createPost()
+    {
+        $this->product->create();
+    }
+
+    public function move()
+    {
+        View::render('product.move');
+    }
+
+    public function movePost()
+    {
+        $this->product->changeCategory();
+        $this->product->showAll();
+    }
 }
-
-
